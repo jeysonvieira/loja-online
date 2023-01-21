@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Loja online</title>
 </head>
 <body>
@@ -18,11 +19,41 @@
 
         <div class="nav">
 
-            <a href="#">Cadastrar-se</a>
 
-            <a href="#">Entar</a>
+            {{#if session.userid}}
+
+                <a href="/products/dashbord"><button class="button">Pordutos</button></a>
+
+                <form action="/products/leave" method="post">
+
+                    <input type="hidden" name="leave">
+                    <input type="submit" value="Sair">
+                
+                
+                </form>
+                
+
+            {{else}}
+
+                <a href="/products/signup"><button class="button" id="button-signup">Cadastrar-se</button></a>
+
+                <a href="/products/login"><button class="button">Entar</button></a>
+
+            {{/if}}
 
         </div>
+
+
+    </div>
+
+
+    <div class="flash-message">
+
+        {{#if messages.info}}
+
+            <p>{{messages.info}}</p>
+
+        {{/if}}
 
 
     </div>

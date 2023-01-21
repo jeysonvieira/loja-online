@@ -2,28 +2,19 @@ import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 
-
-const Product = mongoose.model('products', new Schema({
+const User = mongoose.model('Users', new Schema({
     name : {
         type : String,
         required : true
     },
-    img : {
+    email : {
         type : String,
         required : true
     },
-    price : {
-        type : Number,
-        required : true
-    },
-    description : {
-        type : String,
-        required : true
-    },
-    seller : {
+    password : {
         type : String,
         required : true
     }
 }))
 
-export default Product
+export default User
