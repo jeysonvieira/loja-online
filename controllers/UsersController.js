@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs'
 
 const UserController = class {
 
-    static async SignupPost(req, res){
+    static async SignupPost(req, res) {
 
         //const {name, email, password, confpassword} = req.body
 
@@ -14,11 +14,9 @@ const UserController = class {
         var password = req.body.password
         const confpassword = req.body.confpassword
 
-        const checkemail = await User.find({email : email}).lean()
+        const checkemail = await User.find({ email: email }).lean()
 
-        console.log(password, confpassword)
-
-        if(checkemail[0]){
+        if (checkemail[0]) {
             req.flash('info', "O email já possui cadastro no sistema.")
 
             req.session.save(() => {
@@ -28,7 +26,7 @@ const UserController = class {
             return
         }
 
-        if(password != confpassword){
+        if (password != confpassword) {
             req.flash('info', "As senhas não são iguais.")
 
             req.session.save(() => {
@@ -43,23 +41,28 @@ const UserController = class {
         password = bcrypt.hashSync(password, Salt)
 
 
-        await new User({name, email, password}).save()
+        const create = await new User({ name, email, password }).save()
 
 
-        res.redirect('/products/login')
+        req.session.userid = create._id
 
+        req.flash('info', 'Conta criada com sucesso!')
+
+        req.session.save(() => {
+            res.redirect('/products')
+        })
 
 
     }
 
-    static async LoginPost(req, res){
+    static async LoginPost(req, res) {
 
-        const {email, password} = req.body
+        const { email, password } = req.body
 
 
-        const CheckUser = await User.find({email : email}).lean()
+        const CheckUser = await User.find({ email: email }).lean()
 
-        if(!CheckUser[0]){
+        if (!CheckUser[0]) {
             req.flash('info', 'Esse email não possui cadastro no sistema')
 
             req.session.save(() => {
@@ -69,12 +72,10 @@ const UserController = class {
             return
         }
 
-        console.log(CheckUser[0])
-
 
         const DescriptPass = bcrypt.compareSync(password, CheckUser[0].password)
 
-        if(!DescriptPass){
+        if (!DescriptPass) {
             req.flash('info', 'Senha incorreta.')
 
             req.session.save(() => {
@@ -85,7 +86,7 @@ const UserController = class {
         }
 
 
-        
+
         req.session.userid = CheckUser[0]._id
 
         req.flash('info', 'Login concluido com sucesso!')
@@ -97,7 +98,7 @@ const UserController = class {
 
     }
 
-    static async LeavePost(req, res){
+    static async LeavePost(req, res) {
 
         await req.session.destroy()
 

@@ -13,7 +13,9 @@
 
         <div class="logo">
 
-            <h1>Loja Online</h1>
+            <a href="/products">
+                <h1>Loja Online</h1>
+            </a>
 
         </div>
 
@@ -22,15 +24,15 @@
 
             {{#if session.userid}}
 
-                <a href="/products/dashbord"><button class="button">Pordutos</button></a>
-
-                <form action="/products/leave" method="post">
-
-                    <input type="hidden" name="leave">
-                    <input type="submit" value="Sair">
-                
-                
-                </form>
+                <div class="nav-logado">
+                    <a href="/products/dashbord"><button class="button">Pordutos</button></a>
+                    <form action="/products/leave" method="post">
+                        <input type="hidden" name="leave">
+                        <input type="submit" value="Sair" class="button">
+                    
+                    
+                    </form>
+                </div>
                 
 
             {{else}}

@@ -11,6 +11,4 @@ UserRouter.post('/login', UserController.LoginPost)
 UserRouter.post('/leave', UserAuth, UserController.LeavePost)
 
 
-
-
 export default UserRouter

@@ -1,0 +1,43 @@
+<div class="div-dashbord">
+
+    <div class="adc-products">
+
+        <div class="adc-link"><a href="/products/add"><button class="button">Adicionar</button></a></div>
+
+        {{#each user}}
+
+            <div class="card">
+
+                <div class="img-card">
+                    <img src="{{this.img}}" alt="imagem">
+                </div>
+
+                <div class="infos">
+                    <ul>
+                        <li>Carro : {{this.name}}</li>
+                        <li>Preço : R${{this.price}}</li>
+                        <li>Sobre o carro : {{this.description}}</li>
+                    </ul>
+                </div>
+
+                <div class="edit-delete">
+                    <form action="/products/edit" method="get">
+                        <input type="hidden" name="id" value="{{this._id}}">   
+                        <input type="submit" value="Editar">    
+                    </form>
+
+                    <form action="/products/delete" method="post">
+                        <input type="hidden" name="id" value="{{this._id}}">
+                        <input type="submit" value="Apagar">
+                    </form>
+                </div>
+
+            </div>
+
+        {{/each}}
+
+
+    </div>
+
+
+</div>

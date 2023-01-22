@@ -15,6 +15,22 @@ body {
     padding: 0px 25px 0px 25px;
 }
 
+.nav-bar a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.nav-logado{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+
+}
+
+.nav-logado a{
+    margin-right: 10px;
+}
+
 .button{
     height: 30px;
     font-size: 1em;
@@ -54,4 +70,43 @@ body {
 .form-submit input{
     width: 100px;
     height: 30px;
+}
+
+.adc-link{
+    text-align: end;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.card{
+    width: 200px;
+    height: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+
+}
+
+.infos ul{
+    list-style: none;
+    padding-left: 0px;
+}
+.infos ul li{
+    border-bottom: 1px solid black;
+}
+
+.edit-delete{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    position: relative;
+    bottom: -60px;
+}
+
+.edit-delete form{
+    margin-left: 10px;
+}
+
+.img-card img{
+    width: 200px;
 }
