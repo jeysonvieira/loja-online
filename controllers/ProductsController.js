@@ -5,8 +5,12 @@ import User from "../models/User.js";
 
 const ProdController = class {
 
-    static homeGet(req, res) {
-        res.render('products/home')
+    static async homeGet(req, res) {
+
+        var AllProducts = await Product.find().lean()
+
+
+        res.render('products/home', { AllProducts })
     }
 
     static LoginGet(req, res) {

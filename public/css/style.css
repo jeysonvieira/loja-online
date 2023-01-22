@@ -109,4 +109,38 @@ body {
 
 .img-card img{
     width: 200px;
+    height: 170px;
+}
+
+
+/* .div-home{
+    display: flex;
+    flex-direction: row;
+} */
+
+.all-products{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.bodyy{
+    height: 80vh;
+}
+
+.footer{
+    background-color: black;
+    height: 65px;
+}
+
+.copy{
+    text-align: center;
+    font-size: 1.3em;
+    color: aliceblue;
+}
+
+.flash-message{
+    text-align: center; 
+    font-size: 1.3em;
+    color: blue;
 }
